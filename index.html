@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. P. Sridhara Acharya — Srinivas University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep: #0E3B36;
+    --teal-deeper: #092A26;
+    --gold: #D9A441;
+    --gold-soft: #E9C27C;
+    --ember: #C15B3D;
+    --sea: #EFF4F1;
+    --ink: #142420;
+    --ink-soft: #43554F;
+    --line: rgba(14,59,54,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sea);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background: radial-gradient(120% 140% at 78% -10%, #124b45 0%, var(--teal-deep) 45%, var(--teal-deeper) 100%);
+    color:#F4EFE3;
+    overflow:hidden;
+    padding: 6rem 8vw 5.5rem;
+    min-height: 78vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .rays{
+    position:absolute;
+    top:50%; right:-8%;
+    width:70vmax; height:70vmax;
+    transform:translateY(-50%);
+    opacity:0.9;
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:.6rem;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.72rem;
+    color: var(--gold-soft);
+    margin-bottom:1.6rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--gold-soft);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    font-weight:600;
+    line-height:1.03;
+    max-width:14ch;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--gold-soft);
+  }
+  .hero .role{
+    margin-top:1.6rem;
+    font-size:1.15rem;
+    max-width:38ch;
+    color:#CFE3DD;
+  }
+  .hero .role strong{color:#F4EFE3; font-weight:600;}
+  .hero-links{
+    margin-top:2.6rem;
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .pill{
+    display:inline-flex; align-items:center; gap:.5rem;
+    border:1px solid rgba(244,239,227,0.35);
+    padding:.65rem 1.15rem;
+    border-radius:100px;
+    font-size:.86rem;
+    text-decoration:none;
+    color:#F4EFE3;
+    transition:all .2s ease;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .pill:hover{background:rgba(244,239,227,0.12); border-color:var(--gold-soft);}
+  .pill.solid{background:var(--gold); color:var(--teal-deeper); border-color:var(--gold); font-weight:500;}
+  .pill.solid:hover{background:var(--gold-soft);}
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding: 5.5rem 8vw;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    display:grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap:3rem;
+    margin-bottom:2.6rem;
+  }
+  .section-head .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--gold);
+    font-size:.85rem;
+    letter-spacing:.08em;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.4rem);
+    font-weight:500;
+    color:var(--teal-deep);
+  }
+  .lede{
+    max-width:62ch;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+
+  /* about */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:3.5rem;
+    align-items:start;
+  }
+  .about-grid p{color:var(--ink-soft); max-width:60ch;}
+  .fact-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:1.6rem 1.8rem;
+  }
+  .fact-card + .fact-card{margin-top:1rem;}
+  .fact-card .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--gold);
+    margin-bottom:.4rem;
+    display:block;
+  }
+  .fact-card .v{font-size:1rem; color:var(--ink); font-weight:500;}
+
+  /* focus / metric */
+  .focus{background:var(--teal-deep); color:#F4EFE3;}
+  .focus .section-head h2{color:#F4EFE3;}
+  .focus-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3rem;
+    align-items:center;
+  }
+  .metric-big{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(4rem, 9vw, 7.5rem);
+    line-height:1;
+    color:var(--gold);
+  }
+  .metric-label{
+    margin-top:.8rem;
+    color:#CFE3DD;
+    font-size:.95rem;
+    max-width:30ch;
+  }
+  .tag-list{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.2rem;}
+  .tag{
+    border:1px solid rgba(244,239,227,0.3);
+    padding:.4rem .9rem;
+    border-radius:100px;
+    font-size:.82rem;
+    color:#F4EFE3;
+  }
+
+  /* publication */
+  .pub-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:3px solid var(--ember);
+    border-radius:4px;
+    padding:2rem 2.2rem;
+    max-width:70ch;
+  }
+  .pub-card h3{
+    font-size:1.3rem;
+    font-weight:500;
+    color:var(--teal-deep);
+    line-height:1.35;
+  }
+  .pub-meta{
+    margin-top:.9rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem 1.2rem;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .pub-meta span{white-space:nowrap;}
+
+  /* affiliation */
+  .affil-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3rem;
+  }
+  .addr{
+    border-top:1px solid var(--line);
+    padding-top:1.4rem;
+    margin-top:1.4rem;
+    color:var(--ink-soft);
+    font-size:.95rem;
+  }
+
+  /* footer */
+  footer{
+    padding: 4rem 8vw 3rem;
+    background:var(--teal-deeper);
+    color:#CFE3DD;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:2rem;
+  }
+  footer .brand{font-family:'Fraunces', serif; font-size:1.3rem; color:#F4EFE3;}
+  footer .foot-links{display:flex; gap:1.4rem; flex-wrap:wrap;}
+  footer a{text-decoration:none; font-size:.85rem; color:#CFE3DD; border-bottom:1px solid transparent;}
+  footer a:hover{border-color:var(--gold);}
+  .note{
+    font-size:.78rem;
+    color:#7C978F;
+    max-width:44ch;
+  }
+
+  @media (max-width: 760px){
+    .section-head, .about-grid, .focus-grid, .affil-grid{grid-template-columns:1fr; gap:1.6rem;}
+    section{padding:3.5rem 6vw;}
+    .hero{padding:5rem 6vw 4rem;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="rays" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#D9A441" stroke-opacity="0.55">
+      <circle cx="300" cy="300" r="60" stroke-width="1.5"/>
+      <circle cx="300" cy="300" r="110" stroke-width="1"/>
+      <circle cx="300" cy="300" r="170" stroke-width="1"/>
+      <circle cx="300" cy="300" r="240" stroke-width="0.8" stroke-opacity="0.3"/>
+    </g>
+    <g stroke="#E9C27C" stroke-opacity="0.5" stroke-width="1.4">
+      <line x1="300" y1="300" x2="300" y2="10" />
+      <line x1="300" y1="300" x2="440" y2="45" />
+      <line x1="300" y1="300" x2="545" y2="150" />
+      <line x1="300" y1="300" x2="590" y2="300" />
+      <line x1="300" y1="300" x2="545" y2="450" />
+      <line x1="300" y1="300" x2="440" y2="555" />
+      <line x1="300" y1="300" x2="300" y2="590" />
+      <line x1="300" y1="300" x2="160" y2="555" />
+      <line x1="300" y1="300" x2="55" y2="450" />
+      <line x1="300" y1="300" x2="10" y2="300" />
+      <line x1="300" y1="300" x2="55" y2="150" />
+      <line x1="300" y1="300" x2="160" y2="45" />
+    </g>
+  </svg>
+
+  <div class="eyebrow">Faculty Profile · College of Computer Science &amp; Information Science</div>
+  <h1>Dr. P. Sridhara<br><em>Acharya</em></h1>
+  <p class="role"><strong>Associate Professor</strong>, College of Computer Science and Information Science, Srinivas University — researching renewable energy systems and their application to rural and coastal Karnataka.</p>
+  <div class="hero-links">
+    <a class="pill solid" href="https://srinivasuniversity.irins.org/profile/219385" target="_blank" rel="noopener">IRINS Profile ↗</a>
+    <a class="pill" href="https://scholar.google.co.in/citations?user=7XbB_3EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <span class="num">01 / About</span>
+    <h2>A researcher rooted in Mangalore's academic community</h2>
+  </div>
+  <div class="about-grid">
+    <p>
+      Dr. P. Sridhara Acharya is an Associate Professor at the College of Computer Science and
+      Information Science, Srinivas University, in Srinivas Nagar, Mukka, Surathkal — on the
+      coastal belt of Mangalore, Karnataka. His scholarship centers on renewable energy resources,
+      with particular attention to how solar and other renewable systems can be made more efficient
+      and accessible in rural Indian settings.
+    </p>
+    <div>
+      <div class="fact-card">
+        <span class="k">Institution</span>
+        <span class="v">Srinivas University</span>
+      </div>
+      <div class="fact-card">
+        <span class="k">Department</span>
+        <span class="v">College of Computer Science &amp; Information Science</span>
+      </div>
+      <div class="fact-card">
+        <span class="k">Location</span>
+        <span class="v">Mangalore, Karnataka, India</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="focus">
+  <div class="section-head">
+    <span class="num">02 / Focus</span>
+    <h2>Research interests &amp; standing</h2>
+  </div>
+  <div class="focus-grid">
+    <div>
+      <p class="metric-big mono">269</p>
+      <p class="metric-label">Citations recorded on Google Scholar, reflecting the reach of his
+      work on renewable energy resources within the academic community.</p>
+    </div>
+    <div>
+      <p class="lede" style="color:#CFE3DD;">His published work examines practical, on-the-ground
+      approaches to energy access — particularly how renewable technologies can be deployed more
+      efficiently where conventional grid infrastructure is limited.</p>
+      <div class="tag-list">
+        <span class="tag">Renewable Energy Resources</span>
+        <span class="tag">Rural Energy Access</span>
+        <span class="tag">Solar Energy Efficiency</span>
+        <span class="tag">Computer Science Education</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publication">
+  <div class="section-head">
+    <span class="num">03 / Selected Publication</span>
+    <h2>Published research</h2>
+  </div>
+  <div class="pub-card">
+    <h3>"Increasing the Efficiency in Renewable Energy — Challenges and Solutions for Rural India"</h3>
+    <p style="color:var(--ink-soft); margin-top:.8rem;">
+      Examines the dependence of rural Indian communities on renewable energy resources for daily
+      domestic needs, and the practical challenges standing in the way of more efficient use.
+    </p>
+    <div class="pub-meta">
+      <span>Co-authored with Sreeramana Aithal</span>
+      <span>International Journal of Applied Engineering and Management Letters (IJAEML)</span>
+      <span>Published 30 June 2017</span>
+    </div>
+  </div>
+</section>
+
+<section id="affiliation">
+  <div class="section-head">
+    <span class="num">04 / Affiliation</span>
+    <h2>Srinivas University</h2>
+  </div>
+  <div class="affil-grid">
+    <div>
+      <p class="lede">
+        Srinivas University is a multidisciplinary institution in Mangalore, Karnataka, offering
+        undergraduate, postgraduate, and research programs across its constituent colleges and
+        institutes, including the College of Computer Science and Information Science where
+        Dr. Acharya is based.
+      </p>
+      <div class="addr">
+        College of Computer Science and Information Science<br>
+        Srinivas University, Srinivas Nagar, Mukka, Surathkal<br>
+        Mangalore, Karnataka, India
+      </div>
+    </div>
+    <div>
+      <div class="fact-card">
+        <span class="k">Full profile</span>
+        <span class="v">Available on IRINS (Research Information Management System)</span>
+      </div>
+      <div class="fact-card">
+        <span class="k">Publisher affiliation</span>
+        <span class="v">Srinivas Publication — Institute of Multidisciplinary Research</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="brand">Dr. P. Sridhara Acharya</div>
+    <p class="note" style="margin-top:.6rem;">
+      Compiled from publicly available academic sources. The full IRINS profile could not be
+      retrieved directly due to site access restrictions — see the linked profile for the
+      complete, authoritative record.
+    </p>
+  </div>
+  <div class="foot-links">
+    <a href="https://srinivasuniversity.irins.org/profile/219385" target="_blank" rel="noopener">IRINS Profile</a>
+    <a href="https://scholar.google.co.in/citations?user=7XbB_3EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+  </div>
+</footer>
+
+</body>
+</html>
